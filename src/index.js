@@ -21,6 +21,12 @@ fetchBreeds()
   .finally(() => {
     refs.breedSelect.classList.remove('visually-hidden');
     loader.classList.add('visually-hidden');
+    new SlimSelect({
+      select: '.breed-select',
+      settings: {
+        placeholderText: 'Select breed',
+      },
+    });
   });
 
 function onBreedSelect(e) {
@@ -51,10 +57,3 @@ function renderBreedInfo({ url, breeds }) {
   <div class="breed-box__text"><h2>${breeds[0].name}</h2><p>${breeds[0].description}</p><p><span class="bold">Temperament:</span> ${breeds[0].temperament}</p></div>`;
   refs.catInfo.innerHTML = markup;
 }
-
-// new SlimSelect({
-//   select: '.breed-select',
-//   settings: {
-//     placeholderText: 'Select breed',
-//   },
-// });
