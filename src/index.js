@@ -34,15 +34,16 @@ function onBreedSelect(e) {
   refs.catInfo.classList.add('visually-hidden');
   fetchCatByBreed(e.target.value)
     .then(data => {
-      console.log(data.breeds[0]);
       renderBreedInfo(data);
     })
     .catch(() =>
       Notify.failure('Oops! Something went wrong! Try reloading the page!')
     )
     .finally(() => {
-      refs.catInfo.classList.remove('visually-hidden');
-      loader.classList.add('visually-hidden');
+      setTimeout(() => {
+        loader.classList.add('visually-hidden');
+        refs.catInfo.classList.remove('visually-hidden');
+      }, 500);
     });
 }
 
